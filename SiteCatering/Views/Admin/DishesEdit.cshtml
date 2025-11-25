@@ -1,0 +1,75 @@
+﻿@model Dish
+@{
+    string strTitle = "Редактирование записи";
+    ViewBag.Title = strTitle;
+}
+
+<div>
+    <h2>@strTitle</h2>
+    <div>
+        <form asp-area="" asp-controller="Admin" asp-action="DishesEdit" method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="Photo" />
+
+            <div asp-validation-summary="All"></div>
+            <div>
+                <label asp-for="MenuCategoryEnum"></label>
+                <select asp-for="MenuCategoryEnum" asp-items="Html.GetEnumSelectList<MenuCategoryEnum>()"></select>
+                <span asp-validation-for="MenuCategoryEnum"></span>
+            </div>
+            
+            <div>
+                <label asp-for="FoodCategoryEnum"></label>
+                <select asp-for="FoodCategoryEnum" asp-items="Html.GetEnumSelectList<FoodCategoryEnum>()"></select>
+                <span asp-validation-for="FoodCategoryEnum"></span>
+            </div>
+            
+            <div>
+                <label asp-for="Name"></label>
+                <input asp-for="Name" />
+                <span asp-validation-for="Name"></span>
+            </div>
+
+            <div>
+                <label asp-for="Description"></label>
+                <textarea asp-for="Description" ></textarea>
+                <span asp-validation-for="Description"></span>
+            </div>
+
+            <div>
+                <label asp-for="Kkal"></label>
+                <input asp-for="Kkal" />
+                <span asp-validation-for="Kkal"></span>
+            </div>
+
+            <div>
+                <label asp-for="Price"></label>
+                <input asp-for="Price" />
+                <span asp-validation-for="Price"></span>
+            </div>
+
+            <div>
+                <label asp-for="Сompound"></label>
+                <textarea asp-for="Сompound" ></textarea>
+                <span asp-validation-for="Сompound"></span>
+            </div>
+
+            <div>
+                <label asp-for="Weight"></label>
+                <input asp-for="Weight" />
+                <span asp-validation-for="Weight"></span>
+            </div>
+
+       
+
+            <div>
+                <label asp-for="Photo"></label>
+                <input type="file" name="TitleImageFile" id="TitleImageFile" />
+                <div>
+                    <img class="img=block" src="~/img/@Model.Photo" />
+                </div>
+                <input type="submit" value="Сохранить" />
+            </div>
+            </form>
+    </div>
+</div>

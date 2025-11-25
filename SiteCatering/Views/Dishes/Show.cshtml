@@ -1,0 +1,78 @@
+﻿@model DishesDTO
+@{
+    string? strTitle = Model.Name;
+    ViewBag.Title = strTitle;
+}
+
+<div class="dish-container">
+    <header class="dish-header">
+        <h1 class="dish-title">@strTitle</h1>
+        <div class="dish-categories">
+            <span class="badge menu-category">@Model.MenuCategoryEnum</span>
+            <span class="badge food-category">@Model.FoodCategoryEnum</span>
+        </div>
+    </header>
+    <!-- Сообщения об успехе/ошибках -->
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+
+    <div class="dish-content">
+        <div class="dish-image-container">
+            <img src="~/img/@Model.Photo" alt="@Model.Name" class="dish-image" />
+        </div>
+        <div class="dish-details">
+            <div class="nutrition-info">
+                <div class="nutrition-item">
+                    <span class="nutrition-label">Цена:</span>
+                    <span class="nutrition-value price">@Model.Price ₽</span>
+                </div>
+                <div class="nutrition-item">
+                    <span class="nutrition-label">Калории:</span>
+                    <span class="nutrition-value">@Model.Kkal ккал</span>
+                </div>
+                <div class="nutrition-item">
+                    <span class="nutrition-label">Вес:</span>
+                    <span class="nutrition-value">@Model.Weight г</span>
+                </div>
+            </div>
+
+            <div class="dish-section">
+                <h3 class="section-title">Состав</h3>
+                <p class="section-content">@Model.Сompound</p>
+            </div>
+
+            <div class="dish-section">
+                <h3 class="section-title">Описание</h3>
+                <p class="section-content">@Model.Description</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Форма добавления в корзину -->
+    <form asp-controller="Cart" asp-action="Add" method="post" class="mt-4">
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="dishId" value="@Model.id" />
+        <div class="input-group" style="max-width: 200px;">
+            <input type="number"
+                   name="quantity"
+                   value="1"
+                   min="1"
+                   max="99"
+                   class="form-control" />
+            <button type="submit" class="btn btn-success">
+                В корзину
+            </button>
+        </div>
+    </form>
+</div>

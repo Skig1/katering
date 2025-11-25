@@ -1,0 +1,109 @@
+﻿@model IEnumerable<DishesDTO>
+@{
+    var strTitle = "Наши Блюда";
+    ViewBag.Title = strTitle;
+
+    var displayNames = new Dictionary<string, string>
+    {
+        { nameof(FoodCategoryEnum.ЗакускиНаКомпанию), "Закуски на компанию" },
+        { nameof(FoodCategoryEnum.ЗакускиПорционные), "Порционные закуски" },
+        { nameof(FoodCategoryEnum.СалатыНаКомпанию), "Салаты на компанию" },
+        { nameof(FoodCategoryEnum.СалатыПорционные), "Порционные салаты" },
+        { nameof(FoodCategoryEnum.ГорячиеБлюда), "Горячие блюда" },
+        { nameof(FoodCategoryEnum.Десерты), "Десерты" },
+        { nameof(FoodCategoryEnum.Напитки), "Напитки" }
+    };
+
+    var categoriesOrder = new[] {
+        nameof(FoodCategoryEnum.ЗакускиНаКомпанию),
+        nameof(FoodCategoryEnum.ЗакускиПорционные),
+        nameof(FoodCategoryEnum.СалатыНаКомпанию),
+        nameof(FoodCategoryEnum.СалатыПорционные),
+        nameof(FoodCategoryEnum.ГорячиеБлюда),
+        nameof(FoodCategoryEnum.Десерты),
+        nameof(FoodCategoryEnum.Напитки)
+    };
+}
+
+
+@if (Model.Any())
+{
+    <header class="major">
+        <h2>@strTitle</h2>
+    </header>
+    <!-- Сообщения об успехе/ошибках -->
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+
+    @foreach (var category in categoriesOrder)
+    {
+        var categoryDishes = Model.Where(d => d.FoodCategoryEnum.ToString() == category).ToList();
+        if (categoryDishes.Any())
+        {
+            <section class="category-section">
+                <div class="category-header-container">
+                    <h3 class="category-header">
+                        <span class="category-title">@displayNames[category]</span>
+                        <span class="category-count">@categoryDishes.Count</span>
+                    </h3>
+                    <div class="category-divider"></div>
+                </div>
+
+                <div class="dishes-grid">
+                    @foreach (DishesDTO entity in categoryDishes)
+                    {
+                        <div class="dish-card">
+                            <a asp-area="" asp-controller="Dishes" asp-action="Show" asp-route-id="@entity.id" class="image fit">
+                                <img src="~/img/@entity.Photo" alt="@entity.Name" />
+                            </a>
+                            <div class="CardBody">
+                                <h3>
+                                    <a asp-area="" asp-controller="Dishes" asp-action="Show" asp-route-id="@entity.id">
+                                        @entity.Name
+                                    </a>
+                                </h3>
+                                <p><strong>Категория меню:</strong> @entity.MenuCategoryEnum</p>
+                                <p><strong>Категория еды:</strong> @entity.FoodCategoryEnum</p>
+                                <p><strong>Цена:</strong> @entity.Price руб.</p>
+
+                                <div class="add-to-cart-section">
+                                    <form asp-controller="Cart" asp-action="Add" method="post" class="d-flex align-items-center">
+                                        @Html.AntiForgeryToken() <!-- Обязательно для [ValidateAntiForgeryToken] -->
+                                        <input type="hidden" name="dishId" value="@entity.id" />
+                                        <label for="quantity-@entity.id" class="me-2" style="font-size: 0.9em;">Кол-во:</label>
+                                        <input type="number"
+                                               name="quantity"
+                                               id="quantity-@entity.id"
+                                               value="1"
+                                               min="1"
+                                               max="99"
+                                               class="form-control me-2"
+                                               style="width: 60px; height: 30px;" />
+                                        <button type="submit" class="btn btn-success btn-sm">В корзину</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </section>
+        }
+    }
+
+}
+else
+{
+    <p>Блюда пока не добавлены. 😊</p>
+}
+

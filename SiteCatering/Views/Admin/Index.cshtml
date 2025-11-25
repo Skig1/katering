@@ -1,0 +1,87 @@
+﻿@{
+    string strTitle = "Панель Администратора";
+    ViewBag.Title = strTitle;
+    IEnumerable<Dish>? dishes = ViewBag.Dishes;
+
+
+}
+
+<div class="admin-panel">
+    <h2>@strTitle</h2>
+
+    <div class="section">
+        <h3>Категории меню</h3>
+        <div class="categories-list" id="categoriesList">
+            @foreach (MenuCategoryEnum category in Enum.GetValues(typeof(MenuCategoryEnum)))
+            {
+                <div class="category-item" data-category="@category.ToString()">
+                    @category
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="section">
+        <h3>Блюда и услуги</h3>
+        <div class="actions-toolbar">
+            <a asp-area="" asp-controller="Admin" asp-action="DishesEdit" asp-route-id="" class="btn">Добавить</a>
+        </div>
+
+        <div id="dishesContainer">
+            @if (dishes.Any())
+            {
+                @foreach (Dish entity in dishes)
+                {
+                    <div class="dish-item" data-category="@entity.MenuCategoryEnum.ToString()">
+                        <div class="dish-info">
+                            <div class="dish-name">
+                                <a asp-area="" asp-controller="Dishes" asp-action="Show" asp-route-id="@entity.Id">
+                                    @entity.Name
+                                </a>
+                            </div>
+                            <div class="dish-details">
+                                <strong>Категория меню:</strong> @entity.MenuCategoryEnum<br />
+                                <strong>Категория блюда:</strong> @entity.FoodCategoryEnum<br />
+                                @if (entity.Price.HasValue)
+                                {
+                                    <strong>Цена:</strong> @entity.Price
+                                }
+                                @if (entity.Weight.HasValue)
+                                {
+                                    <strong>Вес:</strong> @entity.Weight 
+                                }
+                                @if (entity.Kkal.HasValue)
+                                {
+                                    <strong>Калорийность:</strong> @entity.Kkal 
+                                }
+                            </div>
+                        </div>
+
+                        <div class="dish-actions">
+                            <a asp-area="" asp-controller="Admin" asp-action="DishesEdit"
+                               asp-route-id="@entity.Id" class="btn">Редактировать</a>
+
+                            <form style="display:inline-block;" id="form-Dishes-@entity.Id"
+                                  asp-area="" asp-controller="Admin" asp-action="DishesDelete" method="post">
+                                <input type="hidden" name="id" value="@entity.Id" />
+                                <a href="#" onclick="document.getElementById('form-Dishes-@entity.Id').submit();"
+                                   class="btn btn-delete">Удалить</a>
+                            </form>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <p>В данный момент нет добавленных блюд.</p>
+            }
+        </div>
+    </div>
+
+    <div class="section logout-section">
+        <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" class="logout-form">
+            <input type="submit" value="Выйти" class="logout-btn" />
+        </form>
+    </div>
+</div>
+

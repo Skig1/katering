@@ -1,0 +1,32 @@
+﻿<html>
+<head>
+	@await Html.PartialAsync("_MetaPartial")
+	@await Html.PartialAsync("_CssPatrial")
+</head>
+
+<body class="is-preload">
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Main -->
+		<div id="main">
+
+			<div class="inner">
+				
+				@await Html.PartialAsync("_HeaderPartial")
+				
+				@* @await Html.PartialAsync("_BannerPartial")  *@
+				
+				@RenderBody()
+			
+			</div>	
+
+		</div>
+		@await Html.PartialAsync("_SidebarPartial")
+	</div>
+
+	@await Html.PartialAsync("_ScriptsPatrial")
+</body>
+
+</html>

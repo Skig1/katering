@@ -1,0 +1,108 @@
+﻿@inject IConfiguration config
+@{
+	AppConfig? appConfig = config.GetSection("Project").Get<AppConfig>();
+}
+<div id="sidebar">
+	<div class="inner">
+
+		<!-- Search -->
+		<section id="search" class="alt">
+			<form method="post" action="#">
+				<input type="text" name="query" id="query" placeholder="Поиск" />
+			</form>
+		</section>
+
+		<!-- Menu -->
+		<nav id="menu">
+			<header class="major">
+				<h2><a href="/">Главная страница</a></h2>
+			</header>
+			<ul>
+	
+				<li><a href="generic.html">Generic</a></li>
+				<li>
+					<span class="opener">Меню</span>
+					<ul>
+						<li>
+							<a asp-controller="Dishes"
+							   asp-action="Index"
+							   asp-route-category="Фуршетное">Фуршетное</a>
+						</li>
+						<li>
+							<a asp-controller="Dishes"
+							   asp-action="Index"
+							   asp-route-category="Банкетное">Банкетное</a>
+						</li>
+						<li>
+							<a asp-controller="Dishes"
+							   asp-action="Index"
+							   asp-route-category="Барбекью">Барбекю</a>
+						</li>
+						<li>
+							<a asp-controller="Dishes"
+							   asp-action="Index"
+							   asp-route-category="ДетскоеМеню">Детское Меню</a>
+						</li>
+						
+						<li>
+							<a asp-controller="Dishes"
+							   asp-action="Index"
+							   asp-route-category="Кофебрейк">Кофе брейк</a>
+						</li>
+					</ul>
+
+				</li>
+				<li>
+					<a asp-controller="Dishes"
+					   asp-action="Index"
+					   asp-route-category="ИнныеУслуги">Иные Услуги</a>
+				</li>
+				<li><a asp-area="" asp-controller="Cart" asp-action="" asp-route-id="">Корзина</a></li>
+			</ul>
+		</nav>
+	
+		<!-- Section -->
+	@* 	<section>
+			<header class="major">
+				<h2>Ante interdum</h2>
+			</header>
+			<div class="mini-posts">
+				<article>
+					<a href="#" class="image"><img src="image/pic02.jpg" alt="" /></a>
+					<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+				</article>
+				<article>
+					<a href="#" class="image"><img src="image/pic05.jpg" alt="" /></a>
+					<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+				</article>
+				<article>
+					<a href="#" class="image"><img src="image/pic04.jpg" alt="" /></a>
+					<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+				</article>
+			</div>
+			<ul class="actions">
+				<li><a href="#" class="button">More</a></li>
+			</ul>
+		</section> *@
+
+		<!-- Section -->
+		<section>
+			<header class="major">
+				<h2>Обратная связь</h2>
+			</header>
+			<p>Будем рады ответить на выши вопросы и помочь с выбором</p>
+			<ul class="contact">
+				<li class="icon solid fa-envelope"><a href="mailto:@appConfig?.Company.CompanyEmail">@appConfig?.Company.CompanyEmail</a></li>
+				<li class="icon solid fa-phone"><a href="tel:@appConfig?.Company.CompanyPhoneShort">@appConfig?.Company.CompanyPhone</a></li>
+				<li class="icon solid fa-home">
+					1234 Somewhere Road #8254<br />
+					Nashville, TN 00000-0000
+				</li>
+			</ul>
+		</section>
+
+		<!-- Footer -->
+		@await Html.PartialAsync("_FooterPartial")
+
+	</div>
+</div>

@@ -1,0 +1,89 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\\u0421\u043B\u0430\u0432\u0430\\source\\repos\\SiteCatering\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{78F6814A-0A34-4143-AEE2-45D0ECAC7399}|SiteCatering\\SiteCatering.csproj|c:\\users\\\u0441\u043B\u0430\u0432\u0430\\source\\repos\\sitecatering\\sitecatering\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{78F6814A-0A34-4143-AEE2-45D0ECAC7399}|SiteCatering\\SiteCatering.csproj|solutionrelative:sitecatering\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{78F6814A-0A34-4143-AEE2-45D0ECAC7399}|SiteCatering\\SiteCatering.csproj|c:\\users\\\u0441\u043B\u0430\u0432\u0430\\source\\repos\\sitecatering\\sitecatering\\views\\dishes\\show.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{78F6814A-0A34-4143-AEE2-45D0ECAC7399}|SiteCatering\\SiteCatering.csproj|solutionrelative:sitecatering\\views\\dishes\\show.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{78F6814A-0A34-4143-AEE2-45D0ECAC7399}|SiteCatering\\SiteCatering.csproj|c:\\users\\\u0441\u043B\u0430\u0432\u0430\\source\\repos\\sitecatering\\sitecatering\\views\\dishes\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{78F6814A-0A34-4143-AEE2-45D0ECAC7399}|SiteCatering\\SiteCatering.csproj|solutionrelative:sitecatering\\views\\dishes\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{78F6814A-0A34-4143-AEE2-45D0ECAC7399}|SiteCatering\\SiteCatering.csproj|c:\\users\\\u0441\u043B\u0430\u0432\u0430\\source\\repos\\sitecatering\\sitecatering\\views\\shared\\_sidebarpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{78F6814A-0A34-4143-AEE2-45D0ECAC7399}|SiteCatering\\SiteCatering.csproj|solutionrelative:sitecatering\\views\\shared\\_sidebarpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Show.cshtml",
+              "DocumentMoniker": "C:\\Users\\\u0421\u043B\u0430\u0432\u0430\\source\\repos\\SiteCatering\\SiteCatering\\Views\\Dishes\\Show.cshtml",
+              "RelativeDocumentMoniker": "SiteCatering\\Views\\Dishes\\Show.cshtml",
+              "ToolTip": "C:\\Users\\\u0421\u043B\u0430\u0432\u0430\\source\\repos\\SiteCatering\\SiteCatering\\Views\\Dishes\\Show.cshtml",
+              "RelativeToolTip": "SiteCatering\\Views\\Dishes\\Show.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-19T17:18:33.076Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CartController.cs",
+              "DocumentMoniker": "C:\\Users\\\u0421\u043B\u0430\u0432\u0430\\source\\repos\\SiteCatering\\SiteCatering\\Controllers\\CartController.cs",
+              "RelativeDocumentMoniker": "SiteCatering\\Controllers\\CartController.cs",
+              "ToolTip": "C:\\Users\\\u0421\u043B\u0430\u0432\u0430\\source\\repos\\SiteCatering\\SiteCatering\\Controllers\\CartController.cs",
+              "RelativeToolTip": "SiteCatering\\Controllers\\CartController.cs",
+              "ViewState": "AgIAAEcAAAAAAAAAAAAkwF8AAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-19T16:58:41.711Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\\u0421\u043B\u0430\u0432\u0430\\source\\repos\\SiteCatering\\SiteCatering\\Views\\Dishes\\Index.cshtml",
+              "RelativeDocumentMoniker": "SiteCatering\\Views\\Dishes\\Index.cshtml",
+              "ToolTip": "C:\\Users\\\u0421\u043B\u0430\u0432\u0430\\source\\repos\\SiteCatering\\SiteCatering\\Views\\Dishes\\Index.cshtml",
+              "RelativeToolTip": "SiteCatering\\Views\\Dishes\\Index.cshtml",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAAC8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-12T16:31:24.379Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "_SidebarPartial.cshtml",
+              "DocumentMoniker": "C:\\Users\\\u0421\u043B\u0430\u0432\u0430\\source\\repos\\SiteCatering\\SiteCatering\\Views\\Shared\\_SidebarPartial.cshtml",
+              "RelativeDocumentMoniker": "SiteCatering\\Views\\Shared\\_SidebarPartial.cshtml",
+              "ToolTip": "C:\\Users\\\u0421\u043B\u0430\u0432\u0430\\source\\repos\\SiteCatering\\SiteCatering\\Views\\Shared\\_SidebarPartial.cshtml",
+              "RelativeToolTip": "SiteCatering\\Views\\Shared\\_SidebarPartial.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-12T16:19:09.325Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

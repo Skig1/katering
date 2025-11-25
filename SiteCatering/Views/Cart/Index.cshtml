@@ -1,0 +1,109 @@
+﻿@model IEnumerable<SiteCatering.Models.CartItem>
+@{
+    string strTitle = "Корзина";
+    ViewBag.Title = strTitle;
+}
+
+<div class="cart-container">
+    <h2 class="cart-title">@ViewBag.Title</h2>
+
+    <!-- Сообщения об успехе/ошибках -->
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+
+    <!-- Пустая корзина -->
+    @if (!Model.Any())
+    {
+        <div class="empty-cart">
+            <p>В корзине нет товаров.</p>
+            <a href="/" class="btn btn-secondary">Вернуться к каталогу</a>
+        </div>
+    }
+    else
+    {
+        <!-- Таблица товаров -->
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Блюдо</th>
+                    <th>Цена (₽)</th>
+                    <th>Кол‑во</th>
+                    <th>Итого (₽)</th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <a asp-area="" 
+                               asp-controller="Dishes"
+                               asp-action="Show"
+                               asp-route-id="@item.DishId"
+                               class="dish-name">
+                                @item.Name
+                            </a>
+                        </td>
+                        <td>@item.Price</td>
+                        <td>
+                            <input type="number"
+                                   name="quantity"
+                                   data-dish-id="@item.DishId"
+                                   value="@item.Quantity"
+                                   min="1"
+                                   max="99"
+                                   class="form-control form-control-sm"
+                                   style="width: 80px;" />
+                        </td>
+                        <td class="item-total">@item.TotalPrice</td>
+                        <td>
+                            <form asp-controller="Cart"
+                                  asp-action="Remove"
+                                  method="post"
+                                  class="d-inline">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="dishId" value="@item.DishId" />
+                                <button type="submit"
+                                        class="btn btn-sm btn-remove"
+                                        onclick="return confirm('Удалить @item.Name из корзины?');">
+                                    Удалить
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <!-- Блок с итоговой суммой и действиями -->
+        <div class="cart-footer">
+            <h4>Общая сумма: <span id="total-cart-price" class="total-price">@Model.Sum(i => i.TotalPrice)</span> ₽</h4>
+            <div>
+               
+                <form asp-controller="Cart"
+                      asp-action="Clear"
+                      method="post"
+                      class="d-inline">
+                    @Html.AntiForgeryToken()
+                    <button type="submit"
+                            class="btn btn-clear"
+                            onclick="return confirm('Очистить всю корзину?');">
+                        Очистить корзину
+                    </button>
+                </form>
+            </div>
+        </div>
+    }
+</div>
